@@ -1,23 +1,27 @@
-require('dotenv').config();
-const express = require("express")
+import dotenv  from "dotenv"
+dotenv.config()
+import express, { json } from "express";
+import { createConnection } from "mysql";
+import connection from "./Lib/mysql.js";
+import dbConnect from "./Lib/mysql.js";
+import { insert } from "./operations.js";
+ 
 const app = express() 
-const mysql = require("mysql")
-app.use(express.json());
+app.use(json());
+ 
 
-const connection = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
-})
+connection.connect((error) => {
+    if (error) throw error;
+    console.log("connected");
+});
 
-connection.connect( (error) => {
-    if (error) throw error
-    console.log("connected")
-})
 
 app.get('/', (req,res) => {
     res.send("hola mundo")
+})
+
+app.post('/camiones', (req,res) => {
+    insert(req,res)
 })
 
 app.listen(process.env.PORT, () => {
