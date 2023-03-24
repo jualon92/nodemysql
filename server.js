@@ -1,30 +1,25 @@
-import dotenv  from "dotenv"
-dotenv.config()
-import express, { json } from "express";
-import { createConnection } from "mysql";
-import connection from "./Lib/mysql.js";
-import dbConnect from "./Lib/mysql.js";
-import { insert } from "./operations.js";
- 
-const app = express() 
-app.use(json());
+import dotenv from "dotenv";
+dotenv.config();
+import express, { json } from "express";  
+import { createCamion, getCamiones, editCamion } from "./operations.js";
  
 
-connection.connect((error) => {
-    if (error) throw error;
-    console.log("connected");
+const app = express();
+app.use(json());
+
+ 
+app.get("/camiones", (req, res) => {
+  getCamiones(req, res);
 });
 
+app.put("/camiones", (req, res) => {
+  createCamion(req, res);
+});
 
-app.get('/camiones', (req,res) => {
-    read(req,res)
-})
-
-app.put('/camiones', (req,res) => {
-    insert(req,res)
-})
+app.post("/camiones", (req, res) => {
+    editCamion(req, res);
+  });
 
 app.listen(process.env.PORT, () => {
-    console.log(`app listening on port port ${process.env.PORT}!`)
-})
-
+  console.log(`app listening on port ${process.env.PORT}!`);
+});
