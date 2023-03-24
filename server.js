@@ -16,11 +16,11 @@ connection.connect((error) => {
 });
 
 
-app.get('/', (req,res) => {
-    res.send("hola mundo")
+app.get('/camiones', (req,res) => {
+    read(req,res)
 })
 
-app.post('/camiones', (req,res) => {
+app.put('/camiones', (req,res) => {
     insert(req,res)
 })
 

@@ -11,8 +11,22 @@ export const insert = async (req, res) => {
       if (err) throw err;
       return res.status(200).send({ success: true, message: rows });
     });
-
   } catch (error) {
     return res.status(500).send({ success: false, message: error.message });
   }
 };
+
+export const read = (req, res) => {
+  const getQuery = `SELECT * FROM viajes`;
+  try {
+    connection.query(getQuery, (err, rows) => {
+      if (err) throw err;
+      return res.status(200).send({ success: true, message: rows });
+    });
+  } catch (error) {
+    return res.status(500).send({ success: false, message: error.message });
+  }
+};
+
+
+ 
