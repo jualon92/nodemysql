@@ -4,4 +4,4 @@
 
 # local env files
 .env
-.bfg.jar
+bfg.jar
