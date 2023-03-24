@@ -8,19 +8,16 @@ import {
   deleteCamion,
   getCamion,
 } from "./operations.js";
-import { testDBConnection } from "./Models/Camion.js";
-import path from "path" 
- 
+import { testDBConnection } from "./Models/Camion.js"; 
+import { fileURLToPath } from "node:url";
 
 const app = express();
 app.use(json());
-const __dirname = path.resolve();
 testDBConnection();
  
 
-
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/index.html"));
+  res.sendFile( fileURLToPath(new URL("./public/index.html", import.meta.url)));
 });
 
 app.get("/camiones", (req, res) => {
