@@ -8,7 +8,7 @@ import {
   deleteCamion,
   getCamion,
 } from "./operations.js";
-import { testDBConnection } from "./Models/Camion.js"; 
+import { testDBConnection } from  "./Libs/sequalize.js"; 
 import { fileURLToPath } from "node:url";
 
 const app = express();
