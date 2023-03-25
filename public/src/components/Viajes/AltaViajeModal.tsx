@@ -1,7 +1,7 @@
 //@ts-nocheck
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import AltaCliente from '../pages/AltaCliente';
+import Modal from 'react-bootstrap/Modal'; 
+import AltaViaje from "./AltaViaje"
 const AltaClienteModal = (props)  => {
   
   return (
@@ -13,12 +13,12 @@ const AltaClienteModal = (props)  => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Alta Cliente
+          Alta Viaje
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
       
-        <AltaCliente/>
+        <AltaViaje/>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>

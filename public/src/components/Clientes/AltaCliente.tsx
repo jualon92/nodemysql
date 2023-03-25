@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { apiMethods, clientesFormHeaders, fetcher } from "../utils"; 
-import { IFormCliente } from "../utils/interfaces";
+import { apiMethods, clientesFormHeaders, fetcher } from "../../utils"; 
+import { IFormCliente } from "../../utils/interfaces";
 
 const AltaCliente = () => {
     const fetchAddCliente = async (cliente: IFormCliente, e:any) => {

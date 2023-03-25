@@ -1,5 +1,5 @@
 import Table from 'react-bootstrap/Table';
-import { ICliente } from "../utils/interfaces";
+import { ICliente } from "../../utils/interfaces";
 
 interface IClientesProps {
   clientes: Array<ICliente>; 
