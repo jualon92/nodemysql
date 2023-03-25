@@ -9,9 +9,13 @@ express sirve front react desde  public/dist
 
 ## Herramientas utilizadas:
 Express
+
 Sequalize
+
 DBeaver
+
 Vite
+
 Preact + TS, React Bootstrap
 
 
