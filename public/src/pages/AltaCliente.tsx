@@ -44,13 +44,19 @@ const AltaCliente = () => {
       <Form onSubmit={(e) => submitForm(e)}>
         {/*@ts-ignore */}
         <Form.Group className="mb-4" controlId="formNombre">
-          <Form.Control type="text" placeholder="Ingresar Nombre" />
+          <Form.Control type="text" placeholder="Ingresar Nombre"   required  />
           <Form.Text className="text-muted"></Form.Text>
+          <Form.Control.Feedback type="invalid">
+            Agregar Nombre
+          </Form.Control.Feedback>
         </Form.Group>
-
+   {/*@ts-ignore */}
         <Form.Group className="mb-4" controlId="formCUIT">
           {/*@ts-ignore */}
-          <Form.Control type="text" placeholder="CUIT" />
+          <Form.Control type="text" placeholder="CUIT"  minlength="11" required />
+          <Form.Control.Feedback type="invalid">
+            Agregar CUIT de 11 digitos
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Button variant="primary" type="submit">
