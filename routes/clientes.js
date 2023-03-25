@@ -9,23 +9,23 @@ import {
 
 const clientesRoutes = express();
 
-clientesRoutes.get("/clientes", (req, res) => {
+clientesRoutes.get("/api/clientes", (req, res) => {
   getClientes(req, res);
 });
 
-clientesRoutes.get("/clientes/*", (req, res) => {
+clientesRoutes.get("/api/clientes/*", (req, res) => {
   getCliente(req, res);
 });
 
-clientesRoutes.put("/clientes", (req, res) => {
+clientesRoutes.put("/api/clientes", (req, res) => {
   createCliente(req, res);
 });
 
-clientesRoutes.post("/clientes", (req, res) => {
+clientesRoutes.post("api/clientes", (req, res) => {
   editCliente(req, res);
 });
 
-clientesRoutes.delete("/clientes/*", (req, res) => {
+clientesRoutes.delete("/api/clientes/*", (req, res) => {
   deleteCliente(req, res);
 });
 

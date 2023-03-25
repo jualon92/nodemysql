@@ -9,23 +9,23 @@ import {
 
 const viajesRoutes = express();
 
-viajesRoutes.get("/viajes", (req, res) => {
+viajesRoutes.get("/api/viajes", (req, res) => {
   getViajes(req, res);
 });
 
-viajesRoutes.get("/viajes/*", (req, res) => {
+viajesRoutes.get("/api/viajes/*", (req, res) => {
   getViaje(req, res);
 });
 
-viajesRoutes.put("/viajes", (req, res) => {
+viajesRoutes.put("/api/viajes", (req, res) => {
   createViaje(req, res);
 });
 
-viajesRoutes.post("/viajes", (req, res) => {
+viajesRoutes.post("/api/viajes", (req, res) => {
   editViaje(req, res);
 });
 
-viajesRoutes.delete("/viajes/*", (req, res) => {
+viajesRoutes.delete("api/viajes/*", (req, res) => {
   deleteViaje(req, res);
 });
 
