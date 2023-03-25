@@ -15,8 +15,8 @@ Vite
 Preact + TS, React Bootstrap
 
 
-## Pendientes:
-getClienteById devuelve null si no existe entrada con tal id, deberia devolver error.
+## Pendientes: 
+
 nav bar
-nombre cliente puede ser empty string
+  
 Viajes 
