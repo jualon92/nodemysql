@@ -14,7 +14,8 @@ export const Cliente = sequelize.define(
     },
     nombre: { 
       type: DataTypes.STRING, 
-      allowNull: false,  
+      allowNull: false,   
+      validate: { len: [1] }
     },
     cuit: { //podria utilizarse bcrypt para cuit
       type: DataTypes.STRING,  // no van a realizarse operaciones numericas. 
