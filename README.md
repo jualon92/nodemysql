@@ -21,6 +21,6 @@ Preact + TS, React Bootstrap
 
 ## Pendientes: 
 
-nav bar
-  
-Viajes 
+router
+
+refactor

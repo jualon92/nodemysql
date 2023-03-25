@@ -3,19 +3,17 @@ import Form from "react-bootstrap/Form";
 import { apiMethods, clientesFormHeaders, fetcher } from "../../utils";
 import { IFormCliente, IFormViaje } from "../../utils/interfaces";
 import useSWR from "swr"
-const AltaViaje = () => {
-  const { data, isLoading, mutate } = useSWR(
-    "http://localhost:3000/api/viajes",
-    fetcher
-  );
+const EditViaje = (props:any) => {
+   const {id, nombre_chofer, apellido_chofer, dni_chofer, patente, cuit_cliente,origen,destino} = props.inputsInfo
+ 
 
-
-  const fetchAddViaje = async (viaje: IFormViaje, e: any ) => {
-    console.log("pre fetch", viaje)
+   
+  const fetchUpdateViaje = async (viaje: IFormViaje, e: any ) => {
+    console.log("viaje", viaje)
     try {
       const response = await fetch(
-        `http://localhost:3000/api/viajes`,
-        clientesFormHeaders(viaje, apiMethods.PUT)
+        `http://localhost:3000/api/viajes/`,
+        clientesFormHeaders(viaje, apiMethods.POST)
       );
       console.log("response", response.status);
       if (response.status != 200) {
@@ -38,20 +36,20 @@ const AltaViaje = () => {
   };
 
   const submitForm = (e: any) => {
-    console.log("e", e.target[2].value)
     e.preventDefault();
-    const nombre_chofer = e.target[0].value;
-    const apellido_chofer = e.target[1].value;
-    const dni_chofer = e.target[2].value;
-    const patente = e.target[3].value;
-    const cuit_cliente = e.target[4].value;
-    const origen = e.target[5].value;
-    const destino = e.target[6].value;
-    const viaje = { nombre_chofer, apellido_chofer, dni_chofer, patente, cuit_cliente, origen, destino};
+    const id = e.target[0].value;
+    const nombre_chofer = e.target[1].value;
+    const apellido_chofer = e.target[2].value;
+    const dni_chofer = e.target[3].value;
+    const patente = e.target[4].value;
+    const cuit_cliente = e.target[5].value;
+    const origen = e.target[6].value;
+    const destino = e.target[7].value;
+    const viaje = { id, nombre_chofer, apellido_chofer, dni_chofer, patente, cuit_cliente, origen, destino};
 
-    fetchAddViaje(viaje, e); 
+    fetchUpdateViaje(viaje, e); 
    //@ts-ignore
-    //window.location.reload(false)
+  window.location.reload(false)
 
   };
 
@@ -66,11 +64,28 @@ const AltaViaje = () => {
             type="text"
             placeholder="Ingresar Nombre"
             required
-            pattern="[a-zA-Z]+"
+            disabled
+            defaultValue=  {id}
           />
           <Form.Text className="text-muted"></Form.Text>
           <Form.Control.Feedback type="invalid">
-            Agregar Nombre Chofer
+           id
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        {/*@ts-ignore */}
+        <Form.Group className="mb-4" controlId="formNombre">
+          {/*//@ts-ignore*/}
+          <Form.Control
+            type="text"
+            placeholder="Ingresar Nombre"
+            required
+            pattern="[a-zA-Z]+"
+            defaultValue=  {nombre_chofer}
+          />
+          <Form.Text className="text-muted"></Form.Text>
+          <Form.Control.Feedback type="invalid">
+            Ingresar nombre chofer
           </Form.Control.Feedback>
         </Form.Group>
         {/*@ts-ignore */}
@@ -81,6 +96,7 @@ const AltaViaje = () => {
             placeholder="Ingresar Apellido"
             required
             pattern="[a-zA-Z]+"
+            defaultValue=  {apellido_chofer}
           />
           <Form.Text className="text-muted"></Form.Text>
           <Form.Control.Feedback type="invalid">
@@ -88,9 +104,9 @@ const AltaViaje = () => {
           </Form.Control.Feedback>
         </Form.Group>
         {/*@ts-ignore */}
-        <Form.Group className="mb-4" controlId="formDNI">
+        <Form.Group className="mb-4" controlId="formNombre">
           {/*//@ts-ignore*/}
-          <Form.Control type="text" placeholder="Ingresar DNI" required pattern="^\D*(?:\d\D*){7,14}$"/>
+          <Form.Control type="text" placeholder="Ingresar DNI" required pattern="^\D*(?:\d\D*){7,}$"    defaultValue={dni_chofer}/>
           <Form.Text className="text-muted"></Form.Text>
           <Form.Control.Feedback type="invalid">
             Agregar DNI Chofer
@@ -103,6 +119,7 @@ const AltaViaje = () => {
             type="text"
             placeholder="Ingresar Patente"
             required 
+            defaultValue={patente}
           />
           <Form.Text className="text-muted"></Form.Text>
           <Form.Control.Feedback type="invalid">
@@ -117,6 +134,7 @@ const AltaViaje = () => {
             placeholder="CUIT Cliente"
             pattern="^\D*(?:\d\D*){10,}$"
             required
+            defaultValue={cuit_cliente}
           />
            <Form.Text className="text-muted">
            11 digitos
@@ -127,13 +145,14 @@ const AltaViaje = () => {
         </Form.Group>
 
         {/*@ts-ignore */}
-        <Form.Group className="mb-4" controlId="formOrigen">
+        <Form.Group className="mb-4" controlId="form Origen">
           {/*//@ts-ignore*/}
           <Form.Control
             type="text"
             placeholder="Ingresar  Origen"
             required
             pattern="[a-zA-Z]+"
+            defaultValue={origen}
           />
           <Form.Text className="text-muted"></Form.Text>
           <Form.Control.Feedback type="invalid">
@@ -148,6 +167,7 @@ const AltaViaje = () => {
             placeholder="Ingresar Destino"
             required
             pattern="[a-zA-Z]+"
+            defaultValue={destino}
           />
           <Form.Text className="text-muted"></Form.Text>
           <Form.Control.Feedback type="invalid">
@@ -155,11 +175,11 @@ const AltaViaje = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          Update
         </Button>
       </Form>
     </div>
   );
 };
 
-export default AltaViaje;
+export default EditViaje;

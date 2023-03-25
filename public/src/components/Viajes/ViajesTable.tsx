@@ -1,9 +1,11 @@
 import { useState } from "preact/hooks";
+import React from "react";
 import { Button, Container } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { useSWRConfig } from "swr";
 import { apiMethods, viajesFormHeaders } from "../../utils";
 import { ICliente, IViaje } from "../../utils/interfaces";
+import EditViajeModal from "./EditViajeModal";
 
 interface IViajesProps {
   viajes: Array<IViaje>;
@@ -11,8 +13,17 @@ interface IViajesProps {
 
 const ViajesTable = ({ viajes }: IViajesProps) => {
   const [viajesState, setViajesState] = useState(viajes)
+  const [inputsInfo, setinputsInfo] = useState<IViaje>()
+  const [modalShow, setModalShow] = React.useState(false);
+ 
+  const editViaje = async (viaje:IViaje) => {
+   
+    setinputsInfo(viaje)
+     setModalShow(true) 
+     
+  }
 
-  const { mutate } = useSWRConfig()
+
   const deleteViaje = async (viaje:IViaje) => {
     console.log("e", viaje)
     console.log("viajes", viajesState)
@@ -33,6 +44,12 @@ const ViajesTable = ({ viajes }: IViajesProps) => {
   }
   return (
     <>
+      <EditViajeModal
+        show={modalShow}
+        inputInfo={inputsInfo}
+        onHide={() => setModalShow(false)}
+      />
+
       {/*//@ts-ignore*/}
       <Table striped bordered hover>
         <thead>
@@ -62,7 +79,7 @@ const ViajesTable = ({ viajes }: IViajesProps) => {
               <td>
                       {/*@ts-ignore*/}
                 <Container className="d-flex flex-row"> 
-                <Button variant="success" className="mx-2 my-2  " >  
+                <Button variant="success" className="mx-2 my-2  " onClick={ (e) => editViaje(viaje)} >  
                 {/*@ts-ignore*/}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

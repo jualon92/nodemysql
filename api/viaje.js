@@ -2,6 +2,7 @@ import { Viaje } from "../Models/Viaje.js";
 
 export const createViaje = async (req, res) => {
   try {
+    console.log(req.body)
     const viaje  = await Viaje.create(req.body);
     return res.status(200).json({ success: true, message: viaje});
   } catch (error) {

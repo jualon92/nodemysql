@@ -21,10 +21,10 @@ export const Viaje = sequelize.define(
       allowNull: false,
     },
     dni_chofer: {
-      type: DataTypes.STRING(14),
+      type: DataTypes.STRING,
       allowNull: false, 
-      unique: true,
-      validate: { len: [7, 11] },
+    //  unique: true,
+    //  validate: { len: [7, 11] },
     },
     patente: {
       type: DataTypes.STRING,
