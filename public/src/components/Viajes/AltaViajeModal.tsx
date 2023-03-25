@@ -2,7 +2,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'; 
 import AltaViaje from "./AltaViaje"
-const AltaClienteModal = (props)  => {
+const AltaViajeModal = (props)  => {
   
   return (
     <Modal
@@ -18,7 +18,7 @@ const AltaClienteModal = (props)  => {
       </Modal.Header>
       <Modal.Body>
       
-        <AltaViaje/>
+        <AltaViaje />
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
@@ -27,4 +27,4 @@ const AltaClienteModal = (props)  => {
   );
 }
 
- export default AltaClienteModal
+ export default AltaViajeModal

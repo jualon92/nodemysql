@@ -2,9 +2,16 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { apiMethods, clientesFormHeaders, fetcher } from "../../utils";
 import { IFormCliente, IFormViaje } from "../../utils/interfaces";
+import useSWR from "swr"
+const AltaViaje = () => {
+  const { data, isLoading, mutate } = useSWR(
+    "http://localhost:3000/api/viajes",
+    fetcher
+  );
 
-const AltaCliente = () => {
-  const fetchAddCliente = async (cliente: IFormViaje, e: any) => {
+
+  const fetchAddViaje = async (cliente: IFormViaje, e: any ) => {
+
     try {
       const response = await fetch(
         `http://localhost:3000/api/viajes`,
@@ -39,9 +46,12 @@ const AltaCliente = () => {
     const cuit_cliente = e.target[4].value;
     const origen = e.target[5].value;
     const destino = e.target[6].value;
-    const cliente = { nombre_chofer, apellido_chofer, dni_chofer, patente, cuit_cliente, origen, destino};
+    const viaje = { nombre_chofer, apellido_chofer, dni_chofer, patente, cuit_cliente, origen, destino};
 
-    fetchAddCliente(cliente, e);
+    fetchAddViaje(viaje, e); 
+   //@ts-ignore
+    window.location.reload(false)
+
   };
 
   return (
@@ -99,7 +109,7 @@ const AltaCliente = () => {
           </Form.Control.Feedback>
         </Form.Group>
         {/*@ts-ignore */}
-        <Form.Group className="mb-4" controlId="formCUIT">
+        <Form.Group className="mb-2" controlId="formCUIT">
           {/*@ts-ignore */}
           <Form.Control
             type="text"
@@ -107,6 +117,9 @@ const AltaCliente = () => {
             pattern="^\D*(?:\d\D*){10,}$"
             required
           />
+           <Form.Text className="text-muted">
+           11 digitos
+        </Form.Text>
           <Form.Control.Feedback type="invalid">
             Agregar CUIT de 11 digitos Cliente
           </Form.Control.Feedback>
@@ -148,4 +161,4 @@ const AltaCliente = () => {
   );
 };
 
-export default AltaCliente;
+export default AltaViaje;

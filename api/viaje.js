@@ -32,7 +32,7 @@ export const editViaje = async (req, res) => {
     const viajeData = { ...req.body };
     await Viaje.update(viajeData, { where: { id: viajeData.id } });
 
-    return res.status(200).json({ success: true, message: viajeData });
+    return res.status(200).json({message: viajeData });
   } catch (error) {
     return res.status(400).json({ success: false, message: error.message });
   }
