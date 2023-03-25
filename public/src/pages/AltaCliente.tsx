@@ -45,7 +45,9 @@ const AltaCliente = () => {
       <Form onSubmit={(e) => submitForm(e)}>
         {/*@ts-ignore */}
         <Form.Group className="mb-4" controlId="formNombre">
-          <Form.Control type="text" placeholder="Ingresar Nombre"   required  />
+            
+            {/*//@ts-ignore*/}
+          <Form.Control type="text" placeholder="Ingresar Nombre"   required pattern="[a-zA-Z]+"   />
           <Form.Text className="text-muted"></Form.Text>
           <Form.Control.Feedback type="invalid">
             Agregar Nombre
