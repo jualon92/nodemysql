@@ -25,7 +25,7 @@ viajesRoutes.post("/api/viajes", (req, res) => {
   editViaje(req, res);
 });
 
-viajesRoutes.delete("api/viajes/*", (req, res) => {
+viajesRoutes.delete("/api/viajes/*", (req, res) => {
   deleteViaje(req, res);
 });
 

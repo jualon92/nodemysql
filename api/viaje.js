@@ -39,7 +39,9 @@ export const editViaje = async (req, res) => {
 };
 
 export const deleteViaje = async (req, res) => {
+  
   try {
+   
     await Viaje.destroy({
       where: { id: req.params[0] },
     });

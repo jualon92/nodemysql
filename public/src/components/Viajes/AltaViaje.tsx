@@ -79,7 +79,7 @@ const AltaCliente = () => {
         {/*@ts-ignore */}
         <Form.Group className="mb-4" controlId="formNombre">
           {/*//@ts-ignore*/}
-          <Form.Control type="text" placeholder="Ingresar DNI" required />
+          <Form.Control type="text" placeholder="Ingresar DNI" required pattern="^\D*(?:\d\D*){7,}$"/>
           <Form.Text className="text-muted"></Form.Text>
           <Form.Control.Feedback type="invalid">
             Agregar DNI Chofer
@@ -104,7 +104,7 @@ const AltaCliente = () => {
           <Form.Control
             type="text"
             placeholder="CUIT Cliente"
-            
+            pattern="^\D*(?:\d\D*){10,}$"
             required
           />
           <Form.Control.Feedback type="invalid">
