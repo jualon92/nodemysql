@@ -9,7 +9,7 @@ const ClientesTable = ({clientes}:IClientesProps) => {
   return (
     <>
       {/*//@ts-ignore*/}
-      <Table striped bordered hover>
+      <Table striped bordered hover  >
         <thead>
           <tr>
             <th>ID</th>
@@ -26,7 +26,9 @@ const ClientesTable = ({clientes}:IClientesProps) => {
             </tr>
           ))}
         </tbody>
+      
       </Table>
+      
     </>
   );
 };

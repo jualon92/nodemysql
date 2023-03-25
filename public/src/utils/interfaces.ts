@@ -5,3 +5,9 @@ export interface ICliente {
     cuit: string;
 
 }
+export interface IFormCliente {
+     
+    nombre: string;
+    cuit: string;
+
+}
