@@ -9,14 +9,21 @@ express sirve front react desde  public/dist
 
 ## Herramientas utilizadas:
 Express
+
 Sequalize
+
 DBeaver
+
 Vite
+
 Preact + TS, React Bootstrap
 
 
 ## Pendientes:
-getClienteById devuelve null si no existe entrada con tal id, deberia devolver error.
+getClienteById deberia devolver error en vez de null al no encontrar Cliente con tal id.
+
 nav bar
-nombre cliente puede ser empty string
+
+validacion para nombre cliente empty string
+
 Viajes 
